@@ -1,0 +1,15 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "-c",
+      "-o",
+      "main.o",
+      "main.c",
+      "-I."
+    ],
+    "directory": "/home/arthur/tmp/opengl",
+    "file": "/home/arthur/tmp/opengl/main.c",
+    "output": "/home/arthur/tmp/opengl/main.o"
+  }
+]

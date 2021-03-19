@@ -1,0 +1,15 @@
+QMainWindow {
+	background-color: #111111
+}
+
+QLineEdit {
+	background-color: #9CAA9B;
+	color: #222E31;
+	font: 20px "Monospace";
+}
+
+QPushButton {
+	background-color: #3E3F44;
+	color: #BDC6CB;
+	font: 20px "Comic Sans";
+}

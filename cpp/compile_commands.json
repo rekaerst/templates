@@ -1,0 +1,14 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/x86_64-linux-gnu-g++-10",
+      "-c",
+      "-o",
+      "main.o",
+      "main.cc"
+    ],
+    "directory": "/home/arthur/src/templates/cpp",
+    "file": "/home/arthur/src/templates/cpp/main.cc",
+    "output": "/home/arthur/src/templates/cpp/main.o"
+  }
+]

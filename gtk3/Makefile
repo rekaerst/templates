@@ -44,6 +44,8 @@ LDFLAGS += $(_LDFLAGS)
 
 OBJ = $(filter %.o, $(C_SRC:.c=.o) $(CXX_SRC:.cpp=.o) $(CXX_SRC:.cc=.o))
 
+PHONY = run clean
+
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
@@ -62,4 +64,6 @@ compile_commands:
 
 clean:
 	rm -rf *.o lib$(BIN).so $(BIN)
+
+.PHONY: $(PHONY)
 # -------------------------------------------------------

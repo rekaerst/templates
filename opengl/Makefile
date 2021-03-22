@@ -56,7 +56,7 @@ $(BIN): $(OBJ)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
 run: $(BIN)
-	./main
+	./$(BIN)
 
 # create compile_commands.json for auto completion
 compile_commands:

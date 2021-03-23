@@ -63,7 +63,7 @@ compile_commands:
 	bear -- make -j$(shell nproc) -B
 
 clean:
-	rm -rf *.o lib$(BIN).so $(BIN)
+	rm -f *.o lib$(BIN).so $(BIN)
 
 .PHONY: $(PHONY)
 # -------------------------------------------------------

@@ -5,11 +5,13 @@
 CC = gcc
 CXX = g++
 
-LIBS =
+LIBS = 
 
 CFLAGS = 
 CXXFLAGS = 
-LDFLAGS = 
+
+LDFLAGS =
+LDLIBS =
 
 DEBUG =
 
@@ -21,39 +23,39 @@ CXX_SRC =$(wildcard *.cc *.cpp)
 DEPS = $(wildcard *.h *.hh *.hpp)
 
 # Run pkg-config when LIBS is not empty
-ifneq (,$(LIBS))
-	_CFLAGS = $(shell pkg-config --cflags $(LIBS))
-	_LDFLAGS = $(shell pkg-config --libs $(LIBS))
+ifneq ($(strip $(LIBS)),)
+	CFLAGS += $(shell pkg-config --cflags $(LIBS))
+	LDLIBS += $(shell pkg-config --libs $(LIBS))
 endif
 # Add -lstdc++ to gcc LDFLAGS when any cpp source file appears
-ifneq (,$(CXX_SRC))
-	_LDFLAGS += -lstdc++
+ifneq ($(strip $(CXX_SRC)),)
+	LDLIBS += -lstdc++
 endif
 # Include debug symbols
-ifeq ($(DEBUG), 1)
-	_CFLAGS += -g
+ifeq ($(strip $(DEBUG)), 1)
+	CFLAGS += -g
 endif
 # Compile as shared library and change binary name to lib$(BIN).so
 ifneq (,$(findstring -shared, $(LDFLAGS)))
 	BIN := lib$(BIN).so
 endif
 
-CFLAGS += $(_CFLAGS) -I.
-CXXFLAGS += $(_CFLAGS)
-LDFLAGS += $(_LDFLAGS)
+CFLAGS +=  -I.
+CXXFLAGS += $(CFLAGS)
 
 OBJ = $(filter %.o, $(C_SRC:.c=.o) $(CXX_SRC:.cpp=.o) $(CXX_SRC:.cc=.o))
 
 PHONY = run clean
 
+$(BIN): $(OBJ)
+	$(CC) $(LDFLAGS) -o $(BIN) $(OBJ) $(LDLIBS)
+
 %.o: %.c $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
+	$(CC) -c $< $(CFLAGS) -o $@
 
 %.o: %.cc %.cpp $(DEPS)
-	$(CXX) -c -o $@ $< $(CFLAGS)
+	$(CXX) -c $< $(CXXFLAGS) -o $@
 
-$(BIN): $(OBJ)
-	$(CC) -o $@ $^ $(LDFLAGS)
 
 run: $(BIN)
 	./$(BIN)

@@ -48,7 +48,7 @@ OBJ = $(filter %.o, $(C_SRC:.c=.o) $(CXX_SRC:.cpp=.o) $(CXX_SRC:.cc=.o))
 PHONY = run clean
 
 $(BIN): $(OBJ)
-	$(CC) $(LDFLAGS) -o $(BIN) $(OBJ) $(LDLIBS)
+	$(CC) -o $(BIN) $(OBJ) $(LDFLAGS) $(LDLIBS)
 
 %.o: %.c $(DEPS)
 	$(CC) -c $< $(CFLAGS) -o $@

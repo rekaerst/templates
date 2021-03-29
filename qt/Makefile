@@ -24,6 +24,7 @@ DEPS =
 # rebuild if header files changed
 HEADERS = $(wildcard *.h *.hh *.hpp)
 DEPS += $(HEADERS)
+MOC = $(filter %.moc, $(DEPS:.h=.moc) $(DEPS:.hh=.moc) $(DEPS:.hpp=.moc))
 
 # Run pkg-config when LIBS is not empty
 ifneq ($(strip $(LIBS)),)
@@ -56,11 +57,14 @@ $(BIN): $(OBJ)
 %.o: %.c $(DEPS)
 	$(CC) -c $< $(CFLAGS) -o $@
 
-%.o: %.cc $(DEPS)
+%.o: %.cc $(DEPS) $(MOC)
 	$(CXX) -c $< $(CXXFLAGS) -o $@
 
-%.o: %.cpp $(DEPS)
+%.o: %.cpp $(DEPS) $(MOC)
 	$(CXX) -c $< $(CXXFLAGS) -o $@
+
+$(MOC): $(HEADERS)
+	moc $< -o $@
 
 run: $(BIN)
 	./$(BIN)
@@ -71,6 +75,7 @@ compile_commands:
 
 clean:
 	rm -f *.o lib$(BIN).so $(BIN)
+	rm -f *.moc
 
 .PHONY: $(PHONY)
 # -------------------------------------------------------

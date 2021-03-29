@@ -53,13 +53,13 @@ PHONY = run clean
 $(BIN): $(OBJ)
 	$(CC) -o $(BIN) $(OBJ) $(LDFLAGS) $(LDLIBS)
 
-%.o: %.c $(HEADERS)
+%.o: %.c $(DEPS)
 	$(CC) -c $< $(CFLAGS) -o $@
 
-%.o: %.cc $(HEADERS)
+%.o: %.cc $(DEPS)
 	$(CXX) -c $< $(CXXFLAGS) -o $@
 
-%.o: %.cpp $(HEADERS)
+%.o: %.cpp $(DEPS)
 	$(CXX) -c $< $(CXXFLAGS) -o $@
 
 run: $(BIN)

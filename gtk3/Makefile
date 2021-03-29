@@ -53,9 +53,11 @@ $(BIN): $(OBJ)
 %.o: %.c $(DEPS)
 	$(CC) -c $< $(CFLAGS) -o $@
 
-%.o: %.cc %.cpp $(DEPS)
+%.o: %.cc $(DEPS)
 	$(CXX) -c $< $(CXXFLAGS) -o $@
 
+%.o: %.cpp $(DEPS)
+	$(CXX) -c $< $(CXXFLAGS) -o $@
 
 run: $(BIN)
 	./$(BIN)

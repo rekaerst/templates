@@ -18,9 +18,12 @@ DEBUG =
 BIN = main
 
 C_SRC = $(wildcard *.c)
-CXX_SRC =$(wildcard *.cc *.cpp)
+CXX_SRC = $(wildcard *.cc *.cpp)
+
+DEPS =
 # rebuild if header files changed
-DEPS = $(wildcard *.h *.hh *.hpp)
+HEADERS = $(wildcard *.h *.hh *.hpp)
+DEPS += $(HEADERS)
 
 # Run pkg-config when LIBS is not empty
 ifneq ($(strip $(LIBS)),)
@@ -50,13 +53,13 @@ PHONY = run clean
 $(BIN): $(OBJ)
 	$(CC) -o $(BIN) $(OBJ) $(LDFLAGS) $(LDLIBS)
 
-%.o: %.c $(DEPS)
+%.o: %.c $(HEADERS)
 	$(CC) -c $< $(CFLAGS) -o $@
 
-%.o: %.cc $(DEPS)
+%.o: %.cc $(HEADERS)
 	$(CXX) -c $< $(CXXFLAGS) -o $@
 
-%.o: %.cpp $(DEPS)
+%.o: %.cpp $(HEADERS)
 	$(CXX) -c $< $(CXXFLAGS) -o $@
 
 run: $(BIN)

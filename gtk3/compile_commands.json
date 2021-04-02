@@ -3,8 +3,6 @@
     "arguments": [
       "/usr/bin/x86_64-linux-gnu-gcc-10",
       "-c",
-      "-o",
-      "main.o",
       "main.c",
       "-pthread",
       "-I/usr/include/gtk-3.0",
@@ -29,10 +27,12 @@
       "-I/usr/include/blkid",
       "-I/usr/include/glib-2.0",
       "-I/usr/lib/x86_64-linux-gnu/glib-2.0/include",
-      "-I."
+      "-I.",
+      "-o",
+      "main.o"
     ],
-    "directory": "/home/arthur/src/templates/gtk3",
-    "file": "/home/arthur/src/templates/gtk3/main.c",
-    "output": "/home/arthur/src/templates/gtk3/main.o"
+    "directory": "/home/arthur/src/repo/templates/gtk3",
+    "file": "/home/arthur/src/repo/templates/gtk3/main.c",
+    "output": "/home/arthur/src/repo/templates/gtk3/main.o"
   }
 ]

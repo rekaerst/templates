@@ -1,0 +1,28 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "-c",
+      "-o",
+      "main.o",
+      "main.c",
+      "-I."
+    ],
+    "directory": "/home/arthur/src/templates/c",
+    "file": "/home/arthur/src/templates/c/main.c",
+    "output": "/home/arthur/src/templates/c/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "-c",
+      "-o",
+      "hello.o",
+      "hello.c",
+      "-I."
+    ],
+    "directory": "/home/arthur/src/templates/c",
+    "file": "/home/arthur/src/templates/c/hello.c",
+    "output": "/home/arthur/src/templates/c/hello.o"
+  }
+]

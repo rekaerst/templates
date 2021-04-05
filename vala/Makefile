@@ -4,6 +4,8 @@
 # DEBUG: include debug symbols when the value is 1
 VALAC = valac
 
+LIBS =
+
 VALAFLAGS =
 
 DEBUG =
@@ -16,13 +18,10 @@ VALA_SRC = $(wildcard *.vala)
 ifeq ($(strip $(DEBUG)), 1)
 	VALAFLAGS += -g
 endif
-# Compile as shared library and change binary name to lib$(BIN).so
-ifneq (,$(findstring -shared, $(LDFLAGS)))
-	BIN := lib$(BIN).so
+
+ifneq ($(strip $(LIBS)),)
+	VALAFLAGS += --pkg $(LIBS)
 endif
-
-
-OBJ = $(filter %.o, $(C_SRC:.c=.o) $(VALA_SRC:=.o))
 
 PHONY = run clean
 

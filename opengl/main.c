@@ -58,8 +58,8 @@ void display() {
 
 int main(int argc, char** argv) {
 	glutInit(&argc, argv); // Initialize GLUT
-	glutCreateWindow("OpenGL Template"); // Create window with given title
 	glutInitWindowSize(320, 320); // Set initial width & height of the window
+	glutCreateWindow("OpenGL Template"); // Create window with given title
 	glutDisplayFunc(display); // Register display callback handler for window repaint
 	glutReshapeFunc(reshape);
 	initGL();

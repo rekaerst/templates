@@ -11,7 +11,7 @@ CFLAGS =
 CXXFLAGS = 
 
 LDFLAGS =
-LDLIBS = -lglut
+LDLIBS = -lglut -lm
 
 DEBUG =
 
